@@ -2,10 +2,11 @@
 
   import { Router, Link, Route} from 'svelte-navigator';
 
-  import Home from './pages/Home/Home.svelte'
-  import Contact from './pages/Contact/Contact.svelte';
-  import Login from './pages/LogIn/Login.svelte';
-  import SignUp from './pages/SignUp/Signup.svelte';
+  import Home from './pages/home/Home.svelte'
+  import Contact from './pages/contact/Contact.svelte';
+  import Login from './pages/login/Login.svelte';
+  import SignUp from './pages/signup/Signup.svelte';
+  import ForgotPassword from './pages/forgot-password/ForgotPassword.svelte';
 </script>
 
 <Router>
@@ -27,6 +28,9 @@
     </Route>
     <Route path="/log-in">
       <Login></Login>
+    </Route>
+    <Route path="/forgot-password">
+      <ForgotPassword></ForgotPassword>
     </Route>
   </div>
 

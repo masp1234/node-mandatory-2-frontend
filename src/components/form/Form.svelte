@@ -1,10 +1,14 @@
 <script>
+    import Link from "../link/Link.svelte";
     export let actionEndpoint;
     export let submitBtnText = 'Submit'
     export let fields = []
+    export let links = []
+    // button=submit ændrer på URL - fix det
 </script>
 
 <form action="{actionEndpoint}" method="POST">
+    
     {#each fields as field}
     <label for="{field.id}">{field.labelText}</label>
     <input type="text" id="{field.id}" placeholder="{field.placeholder}">
@@ -13,7 +17,14 @@
     <div class="button-container">
         <button type="submit">{submitBtnText}</button>
     </div>
-    
+
+    {#if links}
+    {#each links as link}
+    <Link url={link.url} text={link.text}></Link>
+    <br>
+    {/each}
+    {/if}
+
 </form>
 
 <style>
@@ -33,6 +44,7 @@
     .button-container {
         display: flex;
         justify-content: center;
+        margin: 1em 0em 1em 0em;
 
     }
     button {
