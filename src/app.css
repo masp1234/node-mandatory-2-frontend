@@ -16,19 +16,28 @@ nav {
   justify-content: flex-end;
   background-color: rgb(36, 35, 35);
   width: 100%;
-  height: 5em;
+  height: 4em;
   align-items: center;
   padding-right: 10em;
 }
 .nav-item {
-  padding-right: 3em;
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
+  font-size: 1.1em;
+}
+.nav-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-decoration: none;
+  color: goldenrod;
+  padding: 0em 2em;
 }
 
-.nav-item:hover {
-  color: #535bf2;
+.nav-item-container:hover {
+  background-color: blueviolet;
+  color: ghostwhite;
 }
 #page-container {
   padding: 3em;

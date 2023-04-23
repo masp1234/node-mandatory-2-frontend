@@ -11,10 +11,19 @@
 
 <Router>
   <nav>
-    <Link class="nav-item" to="/">Home</Link>
-    <Link class="nav-item" to="/contact">Contact</Link>
-    <Link class="nav-item" to="/sign-up">Sign Up</Link>
-    <Link class="nav-item" to="/log-in">Log In</Link>
+    <Link class="nav-item-container" to="/">
+      <h3 class="nav-item">Home</h3>
+    </Link>
+    
+    <Link class="nav-item-container" to="/contact">
+      <h3 class="nav-item">Contact</h3>
+    </Link>
+    <Link class="nav-item-container" to="/sign-up">
+      <h3 class="nav-item">Sign up</h3>
+    </Link>
+    <Link class="nav-item-container" to="/log-in">
+      <h3 class="nav-item">Log in</h3>
+    </Link>
   </nav>
   <div id="page-container">
     <Route path="/">
