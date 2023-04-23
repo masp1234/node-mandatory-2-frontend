@@ -1,4 +1,5 @@
 <script>
+    import { BASE_URL } from "../../store/baseURL";
     import Form from "../../components/form/Form.svelte";
 
     const fields = [
@@ -35,8 +36,8 @@
 <Form
     fields={fields}
     links={links}
-    actionEndpoint={'http://localhost:8080/api/users'}
-    submitBtnText={'Create account'}
+    endpoint={$BASE_URL + '/api/users'}
+    submitBtnText={'Sign Up'}
     callback={async response => {
         alert('hit the endpoint')
         console.log(response.status)

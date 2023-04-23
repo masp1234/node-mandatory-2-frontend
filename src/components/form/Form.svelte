@@ -1,6 +1,6 @@
 <script>
     import Link from "../link/Link.svelte";
-    export let actionEndpoint;
+    export let endpoint;
     export let submitBtnText = 'Submit'
     export let fields = []
     export let links = []
@@ -10,7 +10,7 @@
     async function handleSubmit(event, callback) {
         event.preventDefault()
         const formData = new FormData(event.target)
-        const response = await fetch(actionEndpoint, {
+        const response = await fetch(endpoint, {
             method: "POST",
             body: JSON.stringify(Object.fromEntries(formData)),
             headers: {

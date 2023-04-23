@@ -1,4 +1,5 @@
 <script>
+    import { BASE_URL } from "../../store/baseURL";
     import Form from "../../components/form/Form.svelte";
     const fields = [
         {
@@ -24,13 +25,14 @@
             text: 'Forgot your password? Click here'
         }
     ]
-    let message
 </script>
+
+<h1>Log in</h1>
 
 <Form 
     fields={fields} 
     submitBtnText="Log In" 
-    actionEndpoint={'http://localhost:8080/log-in'}
+    endpoint={$BASE_URL + '/log-in'}
     links={links} 
     callback={async response => {
         alert('hit the callback')
