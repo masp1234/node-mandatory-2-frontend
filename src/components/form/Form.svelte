@@ -4,18 +4,40 @@
     export let submitBtnText = 'Submit'
     export let fields = []
     export let links = []
-    // button=submit ændrer på URL - fix det
+    export let callback
+    let message = ""
+
+    async function handleSubmit(event, callback) {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const response = await fetch(actionEndpoint, {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+         callback(response)
+         const data = await response.json();
+         message = data.message
+        }
 </script>
 
-<form action="{actionEndpoint}" method="POST">
+<form on:submit={event => {
+    handleSubmit(event, callback)
+}}>
     
     {#each fields as field}
     <label for="{field.id}">{field.labelText}</label>
-    <input type="text" id="{field.id}" placeholder="{field.placeholder}">
+    <input type={field.type ? field.type: "text"} id="{field.id}" name={field.id} placeholder="{field.placeholder}">
     {/each}
+
     
-    <div class="button-container">
-        <button type="submit">{submitBtnText}</button>
+    <div id="lower-container">
+        <div class="button-container">
+            <button type="submit">{submitBtnText}</button>
+        </div>
+        <h3>{message}</h3>
     </div>
 
     {#if links}
@@ -35,21 +57,27 @@
     }
     label {
         margin-bottom: 0.5em;
+        font-weight: bold;
+        font-size: 1.1em
     }
     input {
         margin-bottom: 1em;
         padding: 0.5em;
         border-radius: 0.5em;
+        font-size: 1.01em;
     }
     .button-container {
         display: flex;
         justify-content: center;
-        margin: 1em 0em 1em 0em;
+        margin: 0em 0em 1em 0em;
 
     }
     button {
-        background-color: rgb(35, 182, 35);
+        background-color: rgb(42, 190, 42);
         border-style: none;
         color: white;
+    }
+    button:hover {
+        background-color: rgb(44, 146, 44);
     }
 </style>

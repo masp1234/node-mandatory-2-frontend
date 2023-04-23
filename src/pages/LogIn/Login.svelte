@@ -5,14 +5,13 @@
             id: 'email',
             labelText: 'Email',
             placeholder: 'email here...'
-
         }
         ,
         {
             id: 'password',
             labelText: 'Password',
-            placeholder: 'password here...'
-
+            placeholder: 'password here...',
+            type: 'password'
         },
     ]
     const links = [
@@ -25,9 +24,20 @@
             text: 'Forgot your password? Click here'
         }
     ]
+    let message
 </script>
 
-<Form fields={fields} submitBtnText="Log In" actionEndpoint={'http://localhost:8080/log-in'} links={links}></Form>
+<Form 
+    fields={fields} 
+    submitBtnText="Log In" 
+    actionEndpoint={'http://localhost:8080/log-in'}
+    links={links} 
+    callback={async response => {
+        alert('hit the callback')
+        return response
+        
+        
+}}></Form>
 
 <style>
 
