@@ -11,7 +11,6 @@
   import PrivateRoute from './components/private-route/PrivateRoute.svelte';
 
   import { user } from "./stores/user.js"
-
   function handleLogout() {
     $user = null
   }
@@ -22,8 +21,11 @@
     <Link class="nav-item-container" to="/">
       <h3 class="nav-item">Home</h3>
     </Link>
-    <Link class="nav-item-container" to="profile">
+    <Link class="nav-item-container" to="/profile">
       <h3 class="nav-item">Profile</h3>
+    </Link>
+    <Link class="nav-item-container" to="/extreme-secret">
+      <h3 class="nav-item">Extreme secret</h3>
     </Link>
     
     <Link class="nav-item-container" to="/contact">
@@ -38,7 +40,9 @@
     </Link>
     {/if}
     {#if $user}
-    <button on:click={handleLogout}>Logout</button>
+    <Link on:click={handleLogout} class="nav-item-container" to="/log-in">
+      <h3 class="nav-item">Log out</h3>
+    </Link>
     {/if}
   
   </nav>
@@ -59,12 +63,15 @@
     <Route path="/forgot-password">
       <ForgotPassword></ForgotPassword>
     </Route>
-  </div>
 
-  <PrivateRoute path="profile" let:location>
-    <h3>Welcome {$user.username}</h3>
-    <button on:click={handleLogout}>Logout</button>
-  </PrivateRoute>
+    <PrivateRoute path="/profile" let:location>
+      <h3>Welcome {$user.username}</h3>
+    </PrivateRoute>
+  
+    <PrivateRoute path="/extreme-secret">
+      <h1>This is an extreme secret</h1>
+    </PrivateRoute>
+  </div>
 
 </Router>
 

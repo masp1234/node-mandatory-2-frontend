@@ -76,6 +76,9 @@
         background-color: rgb(42, 190, 42);
         border-style: none;
         color: white;
+        border-radius: 8px;
+        padding: 0.6em 1.2em;
+        width: 8em;
     }
     button:hover {
         background-color: rgb(44, 146, 44);
