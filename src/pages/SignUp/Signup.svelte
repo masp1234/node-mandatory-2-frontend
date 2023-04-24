@@ -1,5 +1,5 @@
 <script>
-    import { BASE_URL } from "../../store/baseURL";
+    import { BASE_URL } from "../../stores/baseURL";
     import Form from "../../components/form/Form.svelte";
 
     const fields = [
