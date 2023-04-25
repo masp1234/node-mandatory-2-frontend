@@ -46,7 +46,6 @@
     endpoint={$BASE_URL + '/api/login'}
     links={links} 
     callback={async data => {
-        alert('hit the callback')
         $user = { username: data.get("username"), password: data.get("password") }
         const from = ($location.state && $location.state.from) || "/"
         navigate(from, { replace: true})

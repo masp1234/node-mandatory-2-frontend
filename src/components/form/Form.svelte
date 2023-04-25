@@ -1,11 +1,11 @@
 <script>
+    import toastr from 'toastr'
     import Link from "../link/Link.svelte";
     export let endpoint;
     export let submitBtnText = 'Submit'
     export let fields = []
     export let links = []
     export let callback
-    let message = ""
 
     async function handleSubmit(event, callback) {
         event.preventDefault()
@@ -19,8 +19,12 @@
         })
          callback(formData)
          const data = await response.json();
-         message = data.message
+         toastr.options = {
+            "positionClass": "toast-bottom-right",
+         }
+         response.status >= 400 ? toastr.error(data.message) : toastr.success(data.message)
         }
+
 </script>
 
 <form on:submit={event => {
@@ -37,7 +41,6 @@
         <div class="button-container">
             <button type="submit">{submitBtnText}</button>
         </div>
-        <h3>{message}</h3>
     </div>
 
     {#if links}
