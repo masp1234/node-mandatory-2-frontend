@@ -5,10 +5,14 @@
 
     const fields = [
         {
-            id: 'username',
-            labelText: 'Username',
-            placeholder: 'username here...',
-            tag: 'input'
+            id: 'email',
+            labelText: 'Email',
+            placeholder: 'email here...',
+        },
+        {
+            id: 'subject',
+            labelText: 'Subject',
+            placeholder: 'subject here...',
         }
         ,
         {
@@ -34,7 +38,7 @@
 
 <Form
     fields={fields}
-    endpoint={$BASE_URL + '/api/login'}
+    endpoint={$BASE_URL + '/api/mail?type=contact'}
     links={links}
     >
 </Form>

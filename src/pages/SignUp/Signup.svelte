@@ -4,17 +4,20 @@
 
     const fields = [
         {
+            id: 'email',
+            labelText: 'Email',
+            placeholder: 'email here...',
+        },
+        {
             id: 'username',
             labelText: 'Username',
             placeholder: 'username here...',
-            tag: 'input'
         },
         {
             id: 'password',
             labelText: 'Password',
             placeholder: 'password here...',
             type: 'password',
-            tag: 'input'
 
         },
         {
@@ -22,7 +25,6 @@
             labelText: 'Repeat password',
             placeholder: 'repeat password here...',
             type: 'password',
-            tag: 'input'
         }
     ]
     const links = [
