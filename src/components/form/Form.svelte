@@ -5,7 +5,7 @@
     export let submitBtnText = 'Submit'
     export let fields = []
     export let links = []
-    export let callback
+    export let callback = null
 
     async function handleSubmit(event, callback) {
         event.preventDefault()
@@ -17,7 +17,10 @@
                 "Content-Type": "application/json"
             }
         })
-         callback(formData)
+        if (callback) {
+            callback(formData)
+        }
+         
          const data = await response.json();
          toastr.options = {
             "positionClass": "toast-bottom-right",
@@ -33,8 +36,12 @@
     
     {#each fields as field}
     <label for="{field.id}">{field.labelText}</label>
-    <input type={field.type ? field.type: "text"} id="{field.id}" name={field.id} placeholder="{field.placeholder}">
-    {/each}
+    {#if typeof field.tag === 'undefined' || field.tag.toLowerCase() === 'input'}
+        <input type={field.type ? field.type : "text"} id="{field.id}" name={field.id} placeholder="{field.placeholder}">
+    {:else if field.tag.toLowerCase() === 'textarea'}
+        <textarea id="{field.id}" name="{field.id}" placeholder="{field.placeholder}" rows="15"></textarea>
+    {/if}
+{/each}
 
     
     <div id="lower-container">
@@ -54,20 +61,21 @@
 
 <style>
     form {
+        width: 25em;
         display: flex;
         flex-direction: column;
-        width: 30%;
     }
     label {
         margin-bottom: 0.5em;
         font-weight: bold;
         font-size: 1.1em
     }
-    input {
+    input, textarea {
         margin-bottom: 1em;
         padding: 0.5em;
         border-radius: 0.5em;
         font-size: 1.01em;
+        border: 0.05em solid black;
     }
     .button-container {
         display: flex;
@@ -78,10 +86,11 @@
     button {
         background-color: rgb(42, 190, 42);
         border-style: none;
-        color: white;
+        color: rgb(223, 223, 223);
         border-radius: 8px;
-        padding: 0.6em 1.2em;
-        width: 8em;
+        padding: 0.8em 5em;
+        font-weight: bold;
+        font-size: large;
     }
     button:hover {
         background-color: rgb(44, 146, 44);

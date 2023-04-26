@@ -6,20 +6,23 @@
         {
             id: 'username',
             labelText: 'Username',
-            placeholder: 'username here...'
+            placeholder: 'username here...',
+            tag: 'input'
         },
         {
             id: 'password',
             labelText: 'Password',
             placeholder: 'password here...',
-            type: 'password'
+            type: 'password',
+            tag: 'input'
 
         },
         {
             id: 'repeatPassword',
             labelText: 'Repeat password',
             placeholder: 'repeat password here...',
-            type: 'password'
+            type: 'password',
+            tag: 'input'
         }
     ]
     const links = [
