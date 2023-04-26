@@ -45,11 +45,14 @@
     submitBtnText="Log In" 
     endpoint={$BASE_URL + '/api/login'}
     links={links} 
-    callback={async data => {
-        $user = { username: data.get("username"), password: data.get("password") }
+    callback={async (data, status) => {
+        if (status === 200) {
+            $user = {id: data.user.id, username: data.user.username }
         const from = ($location.state && $location.state.from) || "/"
         navigate(from, { replace: true})
-        }}>
+        }}
+        }
+        >
 </Form>
 
 <style>

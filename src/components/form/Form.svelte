@@ -16,12 +16,11 @@
             headers: {
                 "Content-Type": "application/json"
             }
-        })
-        if (callback) {
-            callback(formData)
-        }
-         
+        })    
          const data = await response.json();
+         if (callback) {
+            callback(data, response.status)
+        }
          toastr.options = {
             "positionClass": "toast-bottom-right",
          }

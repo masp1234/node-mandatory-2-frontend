@@ -43,7 +43,4 @@
     links={links}
     endpoint={$BASE_URL + '/api/users'}
     submitBtnText={'Sign Up'}
-    callback={async response => {
-        alert('hit the endpoint')
-        console.log(response.status)
-    }}></Form>
+    ></Form>

@@ -11,8 +11,10 @@
   import PrivateRoute from './components/private-route/PrivateRoute.svelte';
 
   import { user } from "./stores/user.js"
-  function handleLogout() {
+  async function handleLogout() {
     $user = null
+    
+
   }
 </script>
 
