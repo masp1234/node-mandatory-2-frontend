@@ -31,7 +31,7 @@
             url: '/forgot-password',
             text: 'Forgot your password? Click here'
         }
-    ]
+    ];
 </script>
 
 <h1>Contact</h1>

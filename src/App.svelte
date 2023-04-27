@@ -7,14 +7,13 @@
   import Login from './pages/login/Login.svelte';
   import SignUp from './pages/signup/Signup.svelte';
   import ForgotPassword from './pages/forgot-password/ForgotPassword.svelte'
+  import Admin from './pages/Admin/Admin.svelte';
 
   import PrivateRoute from './components/private-route/PrivateRoute.svelte';
 
   import { user } from "./stores/user.js"
   async function handleLogout() {
     $user = null
-    
-
   }
 </script>
 
@@ -26,9 +25,13 @@
     <Link class="nav-item-container" to="/profile">
       <h3 class="nav-item">Profile</h3>
     </Link>
-    <Link class="nav-item-container" to="/extreme-secret">
-      <h3 class="nav-item">Extreme secret</h3>
-    </Link>
+    {#if $user}
+      {#if $user.role}
+      <Link class="nav-item-container" to="/admin">
+        <h3 class="nav-item">Admin</h3>
+      </Link>
+      {/if}
+    {/if}
     
     <Link class="nav-item-container" to="/contact">
       <h3 class="nav-item">Contact</h3>
@@ -70,8 +73,8 @@
       <h3>Welcome {$user.username}</h3>
     </PrivateRoute>
   
-    <PrivateRoute path="/extreme-secret">
-      <h1>This is an extreme secret</h1>
+    <PrivateRoute path="/admin">
+      <Admin></Admin>
     </PrivateRoute>
   </div>
 

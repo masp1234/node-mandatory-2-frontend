@@ -47,14 +47,11 @@
     links={links} 
     callback={async (data, status) => {
         if (status === 200) {
-            $user = {id: data.user.id, username: data.user.username }
+            $user = { id: data.user.id, username: data.user.username, email: data.user.email, role: data.user.role }
+            console.log($user.role)
         const from = ($location.state && $location.state.from) || "/"
         navigate(from, { replace: true})
         }}
         }
         >
 </Form>
-
-<style>
-
-</style>
